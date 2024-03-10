@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import MembersTable from "./MembersTable";
 import { createClient } from "@supabase/supabase-js";
 
@@ -9,9 +9,13 @@ const TableSearch = () => {
   const [editingId, setEditingId] = useState(null);
 
   // Create a single supabase client for interacting with your database
-  const supabase = createClient(
-    process.env.REACT_APP_SUPBASE_URL,
-    process.env.REACT_APP_SUPBASE_KEY
+  const supabase = useMemo(
+    () =>
+      createClient(
+        process.env.REACT_APP_SUPBASE_URL,
+        process.env.REACT_APP_SUPBASE_KEY
+      ),
+    [] // Empty dependency array ensures that it's created only once
   );
 
   useEffect(() => {
@@ -32,7 +36,7 @@ const TableSearch = () => {
     };
 
     fetchData();
-  }, []);
+  }, [supabase]);
 
   const handleSearch = () => {
     const searchRegex = new RegExp(searchTerm, "i"); // 'i' for case-insensitive search
@@ -60,7 +64,7 @@ const TableSearch = () => {
       if (error) {
         console.error("Error fetching data:", error);
       } else {
-        console.log(updatedData);
+        console.log("update success " + updatedData);
         // setTableData(updatedData);
       }
     } catch (err) {
