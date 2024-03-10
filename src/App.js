@@ -1,12 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
-import SearchForm from './views/SearchForm';
+import Main from './views/Main';
 import TableSearch from './views/TableSearch';
 
 function App() {
   return (
-    <div className="App">
-      {/* <SearchForm/> */}
+    <div >
+      <Main/>
       <TableSearch/>
     </div>
   );

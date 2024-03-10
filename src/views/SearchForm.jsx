@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 const SearchForm = () => {
   const initialData = [
-    { name: "John Doe", age: 25, city: "New York", phone:"9857463258" },
-    { name: "Jane Smith", age: 30, city: "Los Angeles", phone:"9247856932" },
+    { name: "John Doe", age: 25, city: "New York", phone: "9857463258" },
+    { name: "Jane Smith", age: 30, city: "Los Angeles", phone: "9247856932" },
     // Add more data as needed
   ];
 
@@ -20,8 +20,21 @@ const SearchForm = () => {
     setData(filteredData);
   };
 
+    //   useEffect(() => {
+  //     axios
+  //       .get("http://localhost:5000/api/getMembers")
+  //       .then((response) => {
+  //         console.log(response);
+  //         if (response.status === 200) {
+  //           setTableData(response.data);
+  //         }
+  //       })
+
+  //       .catch((error) => console.error("Error fetching data:", error));
+  //   }, [data]);
   return (
     <div>
+     
       <input
         type="text"
         placeholder="Enter wildcard search"
