@@ -3,7 +3,6 @@ import MembersTable from "./MembersTable";
 import { createClient } from "@supabase/supabase-js";
 
 const TableSearch = () => {
-
   const [initialData, setInitialData] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -11,8 +10,8 @@ const TableSearch = () => {
 
   // Create a single supabase client for interacting with your database
   const supabase = createClient(
-    "https://qcohrcnfiuzkzrqbgfzo.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjb2hyY25maXV6a3pycWJnZnpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDU4NDQwNDIsImV4cCI6MjAyMTQyMDA0Mn0.3p7hcsx9qt0gISAUih7gGnG2Y09HpWaVDDXloo6Svxk"
+    process.env.REACT_APP_SUPBASE_URL,
+    process.env.REACT_APP_SUPBASE_KEY
   );
 
   useEffect(() => {
@@ -53,10 +52,10 @@ const TableSearch = () => {
 
   const handleSave = async (id, req) => {
     try {
-      const { data:updatedData, error } = await supabase
+      const { data: updatedData, error } = await supabase
         .from("members-gws")
         .update(req)
-        .eq('id', id);
+        .eq("id", id);
 
       if (error) {
         console.error("Error fetching data:", error);
@@ -71,7 +70,6 @@ const TableSearch = () => {
   };
   const handleTableChange = (e, id) => {
     const { name, value } = e.target;
-    // console.log(name);
     const updatedData = tableData.map((item) =>
       item.id === id ? { ...item, [name]: value } : item
     );
@@ -79,10 +77,9 @@ const TableSearch = () => {
     setTableData(updatedData);
     // console.log(updatedData);
 
-    // setTableData((prev) => ({
-    //   ...prev,
-    //   [name]: value,
-    // }));
+    // setData((prevData) =>
+    //   prevData.map((row) => (row.id === id ? { ...row, [field]: value } : row))
+    // );
   };
 
   return (
