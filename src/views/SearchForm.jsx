@@ -2,8 +2,14 @@ import React, { useState } from "react";
 
 const SearchForm = () => {
   const initialData = [
-    { name: "John Doe", age: 25, city: "New York", phone: "9857463258" },
-    { name: "Jane Smith", age: 30, city: "Los Angeles", phone: "9247856932" },
+    { id: 1, name: "John Doe", age: 25, city: "New York", phone: "9857463258" },
+    {
+      id: 2,
+      name: "Jane Smith",
+      age: 30,
+      city: "Los Angeles",
+      phone: "9247856932",
+    },
     // Add more data as needed
   ];
 
@@ -20,7 +26,7 @@ const SearchForm = () => {
     setData(filteredData);
   };
 
-    //   useEffect(() => {
+  //   useEffect(() => {
   //     axios
   //       .get("http://localhost:5000/api/getMembers")
   //       .then((response) => {
@@ -34,7 +40,6 @@ const SearchForm = () => {
   //   }, [data]);
   return (
     <div>
-     
       <input
         type="text"
         placeholder="Enter wildcard search"

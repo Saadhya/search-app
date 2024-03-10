@@ -3,17 +3,7 @@ import MembersTable from "./MembersTable";
 import { createClient } from "@supabase/supabase-js";
 
 const TableSearch = () => {
-  //   const initialData = [
-  //     { id: 1, name: "John Doe", age: 25, city: "New York", phone: "9857463258" },
-  //     {
-  //       id: 2,
-  //       name: "Jane Smith",
-  //       age: 30,
-  //       city: "Los Angeles",
-  //       phone: "9247856932",
-  //     },
-  //     // Add more data as needed
-  //   ];
+
   const [initialData, setInitialData] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -116,101 +106,6 @@ const TableSearch = () => {
         </div>
       </div>
 
-      {/* <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>City</th>
-            <th>Phone</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tableData.map((item) => (
-            <tr key={item.id}>
-              <td>
-                {editingId === item.id ? (
-                  <input
-                    type="text"
-                    value={item.name}
-                    onChange={(e) =>
-                      setTableData(
-                        tableData.map((d) =>
-                          d.id === item.id ? { ...d, name: e.target.value } : d
-                        )
-                      )
-                    }
-                  />
-                ) : (
-                  item.name
-                )}
-              </td>
-              <td>
-                {editingId === item.id ? (
-                  <input
-                    type="number"
-                    value={item.age}
-                    onChange={(e) =>
-                      setTableData(
-                        tableData.map((d) =>
-                          d.id === item.id
-                            ? { ...d, age: parseInt(e.target.value, 10) }
-                            : d
-                        )
-                      )
-                    }
-                  />
-                ) : (
-                  item.age
-                )}
-              </td>
-              <td>
-                {editingId === item.id ? (
-                  <input
-                    type="text"
-                    value={item.city}
-                    onChange={(e) =>
-                      setTableData(
-                        tableData.map((d) =>
-                          d.id === item.id ? { ...d, city: e.target.value } : d
-                        )
-                      )
-                    }
-                  />
-                ) : (
-                  item.city
-                )}
-              </td>
-              <td>
-                {editingId === item.id ? (
-                  <input
-                    type="text"
-                    maxLength={10}
-                    value={item.phone}
-                    onChange={(e) =>
-                      setTableData(
-                        tableData.map((d) =>
-                          d.id === item.id ? { ...d, phone: e.target.value } : d
-                        )
-                      )
-                    }
-                  />
-                ) : (
-                  item.phone
-                )}
-              </td>
-              <td>
-                {editingId === item.id ? (
-                  <button onClick={() => handleSave(item.id)}>Save</button>
-                ) : (
-                  <button onClick={() => handleEdit(item.id)}>Edit</button>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
       <MembersTable
         membersData={tableData}
         editingId={editingId}
