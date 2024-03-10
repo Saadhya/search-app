@@ -43,6 +43,7 @@ const MembersTable = ({
                     <tr>
                       {header.map((head) => (
                         <th
+                        key={head}
                           scope="col"
                           className="px-4 py-3.5 text-left text-sm font-normal text-gray-700"
                         >

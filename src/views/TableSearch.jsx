@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import MembersTable from "./MembersTable";
 import { createClient } from "@supabase/supabase-js";
@@ -63,19 +62,17 @@ const TableSearch = () => {
   };
 
   const handleSave = async (id, req) => {
-    // console.log(req);
     try {
       const { data:updatedData, error } = await supabase
-        .from("members-ges")
+        .from("members-gws")
         .update(req)
-        // .update(tableData.find((item) => item.id === id))
         .eq('id', id);
 
       if (error) {
         console.error("Error fetching data:", error);
       } else {
         console.log(updatedData);
-        setTableData(updatedData);
+        // setTableData(updatedData);
       }
     } catch (err) {
       console.error("Error fetching data:", err);
