@@ -43,7 +43,7 @@ const TableSearch = () => {
     };
 
     fetchData();
-  }, [0]);
+  }, []);
 
   const handleSearch = () => {
     const searchRegex = new RegExp(searchTerm, "i"); // 'i' for case-insensitive search
